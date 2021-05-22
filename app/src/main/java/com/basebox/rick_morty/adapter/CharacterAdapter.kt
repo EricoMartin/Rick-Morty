@@ -1,6 +1,5 @@
 package com.basebox.rick_morty.adapter
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,21 +9,16 @@ import com.basebox.rick_morty.entities.SingleCharacter
 
 class CharacterAdapter(private val characters: List<SingleCharacter>): RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
-    inner class CharacterViewHolder(private  val binding: ListItemBinding)
+    inner class CharacterViewHolder(private val binding: ListItemBinding)
         : RecyclerView.ViewHolder(binding.root){
         fun bindItem(category: SingleCharacter){
-            binding.image.load(category.image)
+
             binding.textViewName.text = category.name
             binding.textViewSpecie.text = category.specie
             binding.textViewStatus.text = category.status
+            binding.image.load(category.image)
+
         }
-    }
-
-    fun setUpCategories(){
-//        category.add(SingleCharacter("Family"))
-//        category.add(SingleCharacter("Friends"))
-//        category.add(SingleCharacter("Mentors"))
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {

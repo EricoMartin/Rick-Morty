@@ -14,10 +14,11 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     private val characterLiveData = MutableLiveData<List<SingleCharacter>>()
     val allCharacterLiveData: LiveData<List<SingleCharacter>>
         get() = characterLiveData
+
+    init {
+        getCharacters()
+    }
     private fun getCharacters(){
-
-
-
         viewModelScope.launch{
             try {
                 characterLiveData.value = repository.getCharacters().characters

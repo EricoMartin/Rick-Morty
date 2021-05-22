@@ -10,10 +10,11 @@ import com.basebox.rick_morty.databinding.ActivityMainBinding
 import com.basebox.rick_morty.entities.SingleCharacter
 import com.basebox.rick_morty.network.Api
 import com.basebox.rick_morty.repository.Repository
+import okhttp3.internal.notify
 
 class MainActivity : AppCompatActivity() {
 
-    private  lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
     private val characters = mutableListOf<SingleCharacter>()
 
     private val viewModel: MainViewModel by lazy {
@@ -24,14 +25,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
         viewModel.allCharacterLiveData.observe(this, Observer {
             characters.addAll(it)
         })
 
         val adapter = CharacterAdapter(characters)
-        binding.recycler.layoutManager = LinearLayoutManager(this)
-        binding.recycler.adapter = adapter
+        binding?.recycler?.layoutManager = LinearLayoutManager(this)
+        binding?.recycler?.adapter = adapter
+
     }
 }
