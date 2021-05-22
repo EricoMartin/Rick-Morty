@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="medium_padding">12dp</dimen>
+    <dimen name="big_padding">16dp</dimen>
+    <dimen name="big_text">16sp</dimen>
+    <dimen name="medium_text">14sp</dimen>
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="king_size_padding">20dp</dimen>
+    <dimen name="album_art_width">149dp</dimen>
+    <dimen name="album_art_side">104dp</dimen>
+    <dimen name="album_art_top">30dp</dimen>
+    <dimen name="divider_height">0.5dp</dimen>
+    <dimen name="layout_fixed">271dp</dimen>
+    <dimen name="fixed_height">80dp</dimen>
+    <dimen name="small_album_art">64dp</dimen>
+    <dimen name="image_item_height">120dp</dimen>
+    <dimen name="card_width">84dp</dimen>
+</resources>
