@@ -11,11 +11,12 @@ import com.basebox.rick_morty.entities.SingleCharacter
 import com.basebox.rick_morty.network.Api
 import com.basebox.rick_morty.repository.Repository
 import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
 
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
-    private val characters = mutableListOf<SingleCharacter>()
+    var characters = mutableListOf<SingleCharacter>()
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this,
@@ -25,15 +26,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(binding!!.root)
+        binding?.recycler?.layoutManager = LinearLayoutManager(this)
+        viewModel.allCharacterLiveData.observe(this,
+                Observer {
+                    characters.addAll(it)
+                })
+    }
 
-        viewModel.allCharacterLiveData.observe(this, Observer {
-            characters.addAll(it)
-        })
+    override fun onResume() {
+        super.onResume()
 
         val adapter = CharacterAdapter(characters)
-        binding?.recycler?.layoutManager = LinearLayoutManager(this)
+
         binding?.recycler?.adapter = adapter
 
+       (binding?.recycler?.adapter as CharacterAdapter).notifyDataSetChanged()
     }
 }

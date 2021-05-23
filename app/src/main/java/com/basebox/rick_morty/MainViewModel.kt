@@ -9,7 +9,7 @@ import com.basebox.rick_morty.entities.SingleCharacter
 import com.basebox.rick_morty.repository.Repository
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: Repository): ViewModel() {
+class MainViewModel(private var repository: Repository): ViewModel() {
     private val TAG = "MainViewModel"
     private val characterLiveData = MutableLiveData<List<SingleCharacter>>()
     val allCharacterLiveData: LiveData<List<SingleCharacter>>
