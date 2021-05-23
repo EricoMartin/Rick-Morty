@@ -16,7 +16,8 @@ import okhttp3.internal.notifyAll
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
-    var characters = mutableListOf<SingleCharacter>()
+    private val characters = mutableListOf<SingleCharacter>()
+    private lateinit var adapter: CharacterAdapter
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this,
@@ -31,16 +32,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.allCharacterLiveData.observe(this,
                 Observer {
                     characters.addAll(it)
+                    adapter.notifyDataSetChanged()
                 })
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        val adapter = CharacterAdapter(characters)
+        adapter = CharacterAdapter(characters)
 
         binding?.recycler?.adapter = adapter
-
-       (binding?.recycler?.adapter as CharacterAdapter).notifyDataSetChanged()
     }
 }

@@ -12,12 +12,10 @@ class CharacterAdapter(private val characters: List<SingleCharacter>): RecyclerV
     inner class CharacterViewHolder(private val binding: ListItemBinding)
         : RecyclerView.ViewHolder(binding.root){
         fun bindItem(character: SingleCharacter){
-
+            binding.image.load(character.image)
             binding.textViewName.text = character.name
             binding.textViewSpecie.text = character.specie
             binding.textViewStatus.text = character.status
-            binding.image.load(character.image)
-
         }
     }
 
@@ -32,6 +30,6 @@ class CharacterAdapter(private val characters: List<SingleCharacter>): RecyclerV
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val cat = characters[position]
-        holder.bindItem(cat)
+        return holder.bindItem(cat)
         }
     }

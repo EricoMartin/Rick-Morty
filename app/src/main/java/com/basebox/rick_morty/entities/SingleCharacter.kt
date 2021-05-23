@@ -6,5 +6,5 @@ data class SingleCharacter(
     @Json(name = "name") val name: String,
     @Json(name = "species") val specie: String,
     @Json(name = "status") val status: String,
-    @Json(name = "url") val image: String
+    @Json(name = "image") val image: String
 )

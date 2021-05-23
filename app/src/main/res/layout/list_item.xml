@@ -11,8 +11,7 @@
         android:layout_width="@dimen/small_album_art"
         android:layout_height="@dimen/small_album_art"
         android:padding="@dimen/big_padding"
-        android:scaleType="centerCrop"
-        android:src="@drawable/abc_vector_test" />
+        android:scaleType="centerCrop" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

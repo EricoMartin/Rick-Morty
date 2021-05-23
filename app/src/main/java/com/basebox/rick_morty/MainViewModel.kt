@@ -21,7 +21,7 @@ class MainViewModel(private var repository: Repository): ViewModel() {
     private fun getCharacters(){
         viewModelScope.launch{
             try {
-                characterLiveData.value = repository.getCharacters().characters
+                characterLiveData.value = repository.getCharacters("1").characters
                 Log.d(TAG, "Value of Characters: ${characterLiveData.value}")
             }catch (e: Exception ){
                 Log.e(TAG, "Error: ${e.message.toString()}")
